@@ -10,6 +10,10 @@ function Todo({setTodos}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (todo.task.length < 3) {
+            alert("Please enter 3 or more then 3 characters");
+            return
+        }
         setTodos((prev)=>[...prev,todo])
         setTodo(initialValues)
     }
