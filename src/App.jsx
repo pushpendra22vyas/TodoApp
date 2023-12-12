@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from 'react-dnd-touch-backend';
 import Todo from "./components/Todo";
 import TodoList from "./components/TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const isTouchDevice = 'ontouchstart' in window;
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isTouchDevice ? TouchBackend : HTML5Backend}>
       <div className="h-screen w-screen">
         <div className="flex justify-center">
           <Todo setTodos={setTodos} />
